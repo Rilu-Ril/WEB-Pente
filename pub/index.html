@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Pente</title>
+		<link href="style.css" rel="stylesheet" type="text/css">
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="jquery-1.12.0.min.js" type="text/javascript"></script>
+		
+		<script src="client.js" type="text/javascript"></script>
+		
+	</head>
+	<body>	
+		<h1>Pente</h1>
+	
+		<div id="loginDiv" class="section">
+			<input type="text" name="username" id="username">
+			<button type="button" id="loginButton">Login</button>
+		</div>
+		<!-- ---------------------- -->
+		<div id="waitDiv" class="section">
+			<h2 id="waitText"></h2>
+		</div>
+		<!-- ---------------------- -->
+		<div id="mainDiv" class="section">
+			<div id="capturedPiecesCount1">
+				<h2 id="player1name">player1</h2>
+				<p>0</p>
+			</div>
+			<div id="field">
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+				<div class="row">
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+					<div class="cell"><img src="cell.png"></div>
+				</div>
+			</div>
+			<div id="capturedPiecesCount2">
+				<h2 id="player2name">player2</h2>
+				<p>0</p>
+			</div>
+		</div>
+		
+		<!-- ---------------------- -->
+		
+		
+		
+	</body>
+</html>
